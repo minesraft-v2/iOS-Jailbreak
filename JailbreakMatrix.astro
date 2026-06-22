@@ -1,0 +1,105 @@
+---
+// JailbreakMatrix.astro
+// Server-Side Script: This code runs exclusively at build time.
+
+interface Tool {
+  name: string;
+  version: string;
+  type: string;
+  link: string;
+}
+
+const tools: Tool[] = [
+  { 
+    name: "Dopamine", 
+    version: "iOS 15.0 - 16.6.1", 
+    type: "Semi-Untethered", 
+    link: "https://github.com" 
+  },
+  { 
+    name: "Palera1n", 
+    version: "iOS 15.0 - 17.x", 
+    type: "Hardware-Based (A9-A11)", 
+    link: "https://palera.in" 
+  }
+];
+---
+
+<!-- Template Layout -->
+<div class="matrix-card">
+  <h2>Compatible Jailbreak Vectors</h2>
+  
+  <div class="matrix-list">
+    {tools.map((tool) => (
+      <div class="matrix-item">
+        <div class="item-header">
+          <strong>{tool.name}</strong>
+          <span class="badge">{tool.type}</span>
+        </div>
+        <p>Supports: {tool.version}</p>
+        <a href={tool.link} target="_blank" rel="noopener noreferrer">
+          View Repository →
+        </a>
+      </div>
+    ))}
+  </div>
+</div>
+
+<!-- Component Styles -->
+<style>
+  .matrix-card {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 500px;
+    color: #c9d1d9;
+  }
+  h2 {
+    margin: 0 0 16px 0;
+    font-size: 1.25rem;
+    color: #f0f6fc;
+  }
+  .matrix-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .matrix-item {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 12px;
+  }
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+  .item-header strong {
+    color: #f0f6fc;
+  }
+  .badge {
+    font-size: 0.75rem;
+    background: #21262d;
+    color: #8b949e;
+    padding: 2px 8px;
+    border-radius: 12px;
+    border: 1px solid #30363d;
+  }
+  p {
+    margin: 0 0 10px 0;
+    font-size: 0.875rem;
+    color: #8b949e;
+  }
+  a {
+    color: #58a6ff;
+    font-size: 0.875rem;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
